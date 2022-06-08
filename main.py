@@ -73,5 +73,6 @@ while not end_program:
                     mode_set = True
         pygame.display.flip()
 
-    sorted_list, time_ex = functions[number](screen, WIN_SIZE, CELL_SIZE, elements, True)
+    sorted_list, time_ex = functions[number](screen, WIN_SIZE, CELL_SIZE, elements, False)
+    print(f"Time needed to sort the list: {time_ex} ")
     time.sleep(3)
