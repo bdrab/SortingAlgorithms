@@ -11,8 +11,6 @@ def merge(list_1, list_2):
     result_list = []
     list_1_index = 0
     list_2_index = 0
-    print("list_1", list_1)
-    print("list_2", list_2)
 
     while len(result_list) < (len(list_1) + len(list_2)):
 
@@ -29,16 +27,17 @@ def merge(list_1, list_2):
         if len(list_2) == list_2_index:
             result_list += list_1[list_1_index:]
             break
-    print("resultlist", result_list)
+
     return result_list
 
 
-#def mergesort(screen, win_size, cell_size, arr, show):
+# def mergesort(screen, win_size, cell_size, arr, show):
 def mergesort(list_to_sort):
     if len(list_to_sort) <= 1:
         return list_to_sort
     midpoint = len(list_to_sort) // 2
 
     return merge(list_1=mergesort(list_to_sort[:midpoint]), list_2=mergesort(list_to_sort[midpoint:]))
+
 
 print(mergesort([1, 3, 8, 2, 4, 6]))
