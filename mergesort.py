@@ -14,7 +14,7 @@ def merge(list_1, list_2):
 
     while len(result_list) < (len(list_1) + len(list_2)):
 
-        if list_1[list_1_index] <= list_2[list_2_index]:
+        if list_1[list_1_index].size[1] <= list_2[list_2_index].size[1]:
             result_list.append(list_1[list_1_index])
             list_1_index += 1
         else:
@@ -31,8 +31,8 @@ def merge(list_1, list_2):
     return result_list
 
 
-# def mergesort(screen, win_size, cell_size, arr, show):
 def mergesort(list_to_sort):
+
     if len(list_to_sort) <= 1:
         return list_to_sort
     midpoint = len(list_to_sort) // 2
@@ -40,4 +40,15 @@ def mergesort(list_to_sort):
     return merge(list_1=mergesort(list_to_sort[:midpoint]), list_2=mergesort(list_to_sort[midpoint:]))
 
 
-print(mergesort([1, 3, 8, 2, 4, 6]))
+def mergesort_algorithm(list_to_sort, screen=None, win_size=None, cell_size=None, show=None):
+    x = 0
+    start_time = time.time()
+    screen.fill((0, 0, 0))
+    sorted_list = mergesort(list_to_sort)
+    for element in sorted_list:
+        pygame.draw.rect(screen, (0, 255, 0), (x, win_size - element.size[1], cell_size, element.size[1]))
+        x += cell_size + 1
+    pygame.display.flip()
+    end_time = time.time() - start_time
+
+    return sorted_list, end_time

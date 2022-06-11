@@ -1,11 +1,11 @@
 import random
 import time
 import pygame
-from bubblesort import bubblesort
-from mergesort import mergesort
-from quicksort import quicksort
-from timesort import timesort
-from insertionsort import insertionsort
+from bubblesort import bubblesort_algorithm
+from mergesort import mergesort_algorithm
+from quicksort import quicksort_algorithm
+from timesort import timesort_algorithm
+from insertionsort import insertionsort_algorithm
 
 
 WHITE = (255, 255, 255)
@@ -14,11 +14,11 @@ WIN_SIZE = 500
 CELL_SIZE = 10
 ROWS = WIN_SIZE // CELL_SIZE
 
-functions = {0: bubblesort,
-             1: mergesort,
-             2: quicksort,
-             3: timesort,
-             4: insertionsort}
+functions = {0: bubblesort_algorithm,
+             1: mergesort_algorithm,
+             2: quicksort_algorithm,
+             3: timesort_algorithm,
+             4: insertionsort_algorithm}
 
 algorithms_name = ["Bubble Sort", "Merge Sort", "Quick Sort", "Time Sort", "Insertion Sort"]
 algorithms_number = len(algorithms_name)
@@ -73,6 +73,6 @@ while not end_program:
                     mode_set = True
         pygame.display.flip()
 
-    sorted_list, time_ex = functions[number](screen, WIN_SIZE, CELL_SIZE, elements, False)
+    sorted_list, time_ex = functions[number](elements, screen, WIN_SIZE, CELL_SIZE, True)
     print(f"Time needed to sort the list: {time_ex} ")
-    time.sleep(3)
+    time.sleep(1)
